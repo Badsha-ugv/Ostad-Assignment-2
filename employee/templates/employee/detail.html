@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{obj.name}} {% endblock %}
+
+{% block content %}
+{% include 'nav.html' %}
+
+<div class="container">
+    <div class="card w-50 mx-auto mt-2">
+        <div class="card-header">
+            <span>Employee Profile</span>
+        </div>
+        <div class="card-body  shadow">
+            <div class="user-profile-img "  style="width: 100px; height: 100px;">
+                <img src="{% static 'images/images.jpeg' %}" class="w-100 h-100 rounded-full" alt="">
+            </div>
+            <h3 class="my-2">{{obj.name}}</h3>
+            <p>
+                <b>Designation</b> <span>{{obj.designation}}</span> <br>
+                <b>Salary</b> <span>$ {{obj.salary}}</span> <br>
+                <b>Phone</b> <span>{{obj.phone}}</span> <br>
+            </p>
+                
+           
+            <strong>About:</strong> <br>
+            <p class="w-75 mx-auto">
+                
+
+                    {{obj.short_desc}}
+                
+            </p>
+
+            <a href="{% url 'update' obj.id %}" class="btn btn-info btn-sm">Update</a>
+            <a href="{% url 'delete' obj.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+    </div>
+   
+</div>
+
+{% endblock %}
